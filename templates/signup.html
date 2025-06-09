@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account| Chat.IO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/signup.css')}}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/chatio.png')}}">
+</head>
+<body>
+    <header>
+        <h1>Create account<img src="{{ url_for('static', filename='icons/chatio.png')}}" alt="Chat.IO Logo"> Chat.IO</img>
+    </header>
+    <!-- SIGN UPVALIDATOR From backend -->
+    {% if error %}
+      <div class="error-class">
+        <p>{{error}}</p>
+      </div>
+    {% endif %}
+    {% if status %}
+      <div class="success-class">
+        <p>{{status}}</p>
+      </div>
+    {% endif %}
+    <!-- validation ends here -->
+    
+    <section class="login-box">
+        <form action="/create_account" method="post">
+            <label for="name">Full name</label>
+            <input type="text" name="name" placeholder="E.g John Doe" required>
+            <label for="username">Username or Email</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="button" onclick="showPswd()" id="toggle-btn">Show Password</button>
+            </div>
+
+            <button type="submit" class="login-btn">Create account</button>
+        </form>
+        <p>Already have an account with Chat.IO? <a style="text-decoration :none;"href="/login">Log in </a> to continue enjoying our rich features!</p>
+    </section>
+
+    <footer>
+        &copy; 2025 Chat.IO - DukeeDevLab
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/signup.js')}}"></script>
+</body>
+</html>

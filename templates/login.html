@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Chat.IO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css')}}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/chatio.png')}}">
+</head>
+<body>
+
+    <header>
+        <h1>Login to <img src="{{ url_for('static', filename='icons/chatio.png')}}" alt="Chat.IO Logo"> Chat.IO</h1>
+    </header>
+    {% if error %}
+      <div class="error-class">
+        <p>{{error}}</p>
+      </div>
+    {% endif %}
+    <section class="login-box">
+        <form action="/verify_login" method="post">
+            <label for="username">Username or Email</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="button" onclick="showPswd()" id="toggle-btn">Show Password</button>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p><smaill>Forgot password? <a style="text-decoration:none;" href="/recoverpassword">Click here</a></smaill></p>
+        <p>New to Chat.IO? <a style="text-decoration :none;" href="/signup">Sign up</a> to start enjoying our rich features today!</p>
+    </section>
+
+    <footer>
+        &copy; 2025 Chat.IO - DukeeDevLab
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/login.js')}}"></script>
+</body>
+</html>
